@@ -1,0 +1,41 @@
+==> A TOPICAL PAGERANK BASED ALGORITHM FOR RECOMMENDER SYSTEMS :
+
+-> INTRODUCTION 
+Goal : recommand top-rank items to potentially interested users.
+Dataset : MovieLens
+Results : outperforms SOTA recommanding algorithms (at that time)
+Problem before this paper : recommander systems uses graphs, but it doesn't take into account features (item genre...)
+
+-> ALGORITHM :
+Goal : investigate correlation between ranking and recsys (because we can recommand top rank items like in ranking)
+What they do : use ranking algos for web search -> recommandation using topical pagerank.
+Input : t_ki = (u_k, m_i, r_ki)
+This is the input of the recsys, u_k are users, m_i are items and r_ki is an evaluation score (1 to 5).
+
+-> MODEL :
+Correlation graph among items, m_i and m_j are highly related if co-occuring in preference list of different users.
+- u_ij : user choosing both m_i and m_j.
+- define a matrix M (n_item * n_item) so M_ij = | u_ij |.
+- normalize matrix M, M_ij = M_ij/sum(col j) 
+- this is our correlation graph (weighted edge found in the matrix)
+
+-> TOPICAL PAGERANK BASED ALGORITHM :
+- topical pagerank -> topical = items genre here
+- (2) pagerank base equations for links 
+- (3) rewritten in matrix form for each topic
+- (4) item rank score matrix
+- R is our rank matrix, M is our correlation graph matrix, F is an assistant matrix, I is the original user-item evaluation score matrix
+- d and alpha are constant d=0.15 and alpha=0.1 for the experiments
+- (5) we obtain k correspond matrix R^u_k (???)
+- (6) we obtain TR_ki matrix which denotes the estimated item rank score for user u_k to item m_i
+- recommand the top-rank items in TR_k to user k
+
+-> EXPERIMENT :
+
+- MovieLens dataset : 100k ratins, 1682 movies, 943 users
+- 5 splits -> each with 80% train and 20% test
+- metric : degree of agreement (DOA)
+- if the score of the TR matrix is higher for an unwatched film --> 0, else --> 1
+- equation of the DOA for user u_k --> represents the percentage of correct orders with regard to total order pairs
+- do it for all users and get DOA
+- DOA(TR) = 89.08, DOA(PR) = 87.74 !
