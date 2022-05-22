@@ -1,4 +1,6 @@
 from global_ import *
+import pprint
+import random
 
 dataset = np.array([[{'201': 'Ed Wood (1994)', '551': 'James and the Giant Peach (1996)', '124': 'Rob Roy (1995)', '828': 'Platoon (1986)', '384': 'Dazed and Confused (1993)'},
         {'277': 'Shawshank Redemption, The (1994)', '2224': 'Fight Club (1999)', '659': 'Godfather, The (1972)', '507': 'Terminator 2: Judgment Day (1991)', '31': 'Twelve Monkeys (a.k.a. 12 Monkeys) (1995)'},

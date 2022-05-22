@@ -20,7 +20,7 @@ R_uk, tmp_M, P_ig, M_csr, train_rating_user_list, test_rating_user_list = init(m
 
 # Run the algorithm
 n_user = len(np.unique(ratings["userId"]))
-n_user = 3 ## Use when testing
+# n_user = 3 ## Use when testing
 TR_ki_all_user = iterative_TR_ki(n_user, R_uk, tmp_M, P_ig, M_csr, d=0.15, alpha=0.1, iter_max=15)
 
 # Running some test for a test user
